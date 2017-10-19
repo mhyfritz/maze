@@ -1,24 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
     <title>maze</title>
 </head>
+
 <body>
-    <div class="dropzone" style="margin-bottom: 10px;">
-        <i class="fa fa-arrow-circle-o-down" style="float: left;"></i>
-        Drop reference file
-        <i class="fa fa-arrow-circle-o-down" style="float: right;"></i>
-    </div>
-    <div class="dropzone" style="margin-bottom: 10px;">
-        <i class="fa fa-arrow-circle-o-down" style="float: left;"></i>
-        Drop query file
-        <i class="fa fa-arrow-circle-o-down" style="float: right;"></i>
+    <div class="columns">
+        <div class="column is-three-quarters" style="border-right: solid 1px #ccc;">
+            <canvas id="canvas" width="500" height="500"></canvas>
+        </div>
+        <div class="column">
+            <div style="margin-bottom: 10px;">
+                <a id="btn-run" class="button is-primary">
+                    <span class="icon" style="margin-right: 5px;"><i class="fa fa-play-circle-o" aria-hidden="true"></i></span>
+                    Visualize
+                </a>
+            </div>
+            <div style="margin-bottom: 10px;">
+                Match length (bp)
+                <input id="input-k" class="input" type="number" value="9" min="4" max="20">
+            </div>
+            <div style="margin-bottom: 10px;">
+                <h2>Reference sequence</h2>
+                <textarea id="textarea-reference" class="textarea" spellcheck="false"></textarea>
+            </div>
+            <div>
+                <h2>Query sequence</h2>
+                <textarea id="textarea-query" class="textarea" spellcheck="false"></textarea>
+            </div>
+        </div>
     </div>
     <script src="bundle.js"></script>
 </body>
+
 </html>

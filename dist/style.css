@@ -1,18 +1,29 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Nunito+Sans');
 
-.dropzone {
-    font-family: 'Nunito', sans-serif;
-    font-size: 1.2rem;
-    line-height: 1.2rem;
-    color: #444;
-    border: solid 1px;
-    border-radius: 5px;
-    width: 250px;
-    text-align: center;
-    padding: 10px;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    height: 100vh;
 }
 
-.dropzone--hover {
-    background-color: #444;
-    color: ghostwhite;
+/* sensitivity hack */
+textarea.textarea.textarea {
+    font-family: 'Inconsolata', monospace;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    min-height: 200px;
+}
+
+.columns {
+    height: 100%;
+    margin: 0;
+}
+
+.column {
+    padding: 20px;
+}
+
+canvas {
+    border: 1px solid #ccc;
 }
