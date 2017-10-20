@@ -16,7 +16,7 @@ function run() {
     let sequenceReference = textareaReference.value.replace(/\s+/g, '').toUpperCase()
     let sequenceQuery = textareaQuery.value.replace(/\s+/g, '').toUpperCase()
     let k = parseInt(inputK.value, 10)
-    if (sequenceReference && sequenceQuery) {
+    if (sequenceReference && sequenceQuery && Number.isInteger(k) && k > 0) {
         visualize(k, sequenceReference, sequenceQuery)
     }
 }
