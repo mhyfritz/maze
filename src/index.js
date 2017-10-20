@@ -44,12 +44,12 @@ function visualize (k, seq1, seq2) {
 
   const index = buildIndex(k, seq1)
 
-  let kmersIter = kmers(seq2, k)
+  const iterKmers = kmers(k, seq2)
   context.beginPath()
   context.strokeStyle = 'dodgerblue'
   while (true) {
-    const kmer = kmersIter.next()
-    if (kmer.done) {
+    const kmer = iterKmers.next()
+    if (kmer.value === undefined) {
       break
     }
     if (kmer.value in index) {
@@ -65,12 +65,12 @@ function visualize (k, seq1, seq2) {
   }
   context.stroke()
 
-  kmersIter = kmers(seq2, k)
+  iterKmers.seek(0)
   context.beginPath()
   context.strokeStyle = 'red'
   while (true) {
-    const kmer = kmersIter.next()
-    if (kmer.done) {
+    const kmer = iterKmers.next()
+    if (kmer.value === undefined) {
       break
     }
     const kmerRc = revcom(kmer.value)
@@ -90,10 +90,10 @@ function visualize (k, seq1, seq2) {
 
 function buildIndex (k, seq) {
   const index = {}
-  const kmersIter = kmers(seq, k)
+  const iterKmers = kmers(k, seq)
   while (true) {
-    let kmer = kmersIter.next()
-    if (kmer.done) {
+    const kmer = iterKmers.next()
+    if (kmer.value === undefined) {
       break
     }
     if (kmer.value in index) {
