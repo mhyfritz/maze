@@ -15,11 +15,11 @@ const canvas = document.getElementById('canvas')
 const context = canvas.getContext('2d')
 
 function run () {
-  let sequenceReference = textareaReference.value.replace(/\s+/g, '').toUpperCase()
-  let sequenceQuery = textareaQuery.value.replace(/\s+/g, '').toUpperCase()
+  let reference = getSequence(textareaReference.value, 'Reference')
+  let query = getSequence(textareaQuery.value, 'Query')
   let k = parseInt(inputK.value, 10)
-  if (sequenceReference && sequenceQuery && Number.isInteger(k) && k > 0) {
-    visualize(k, sequenceReference, sequenceQuery)
+  if (reference.seq && query.seq && Number.isInteger(k) && k > 0) {
+    visualize(k, reference.seq, query.seq)
   }
 }
 
@@ -27,7 +27,7 @@ function visualize (k, seq1, seq2) {
   const lenSeq1 = seq1.length
   const lenSeq2 = seq2.length
 
-  const width = Math.min(containerCanvas.clientWidth, containerCanvas.clientHeight) - 40
+  const width = Math.min(containerCanvas.clientWidth, containerCanvas.clientHeight) - 80
   const height = width
 
   canvas.width = width
@@ -104,4 +104,24 @@ function buildIndex (k, seq) {
     }
   }
   return index
+}
+
+function getSequence (str, id = '') {
+  const ret = {
+    header: '',
+    id,
+    seq: ''
+  }
+  if (str.startsWith('>')) {
+    const headerEnd = str.indexOf('\n')
+    ret.header = str.substring(0, headerEnd)
+    const match = ret.header.match(/>\s*(\S+)/)
+    if (match) {
+      ret.id = match[1]
+    }
+    ret.seq = str.substring(headerEnd).replace(/\s+/g, '').toUpperCase()
+  } else {
+    ret.seq = str.replace(/\s+/g, '').toUpperCase()
+  }
+  return ret
 }
