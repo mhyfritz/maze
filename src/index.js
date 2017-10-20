@@ -34,12 +34,12 @@ function visualize (k, seq1, seq2) {
   canvas.height = height
 
   const x = scaleLinear()
-        .domain([0, lenSeq1 - 1])
-        .range([0, width - 1])
+    .domain([0, lenSeq1 - 1])
+    .range([0, width - 1])
 
   const y = scaleLinear()
-        .domain([0, lenSeq2 - 1])
-        .range([0, height - 1])
+    .domain([0, lenSeq2 - 1])
+    .range([0, height - 1])
 
   context.clearRect(0, 0, width, height)
 
