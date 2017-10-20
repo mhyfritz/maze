@@ -20,10 +20,18 @@ textarea.textarea.textarea {
     margin: 0;
 }
 
-.column {
+.column--right {
     padding: 20px;
+}
+
+.column--left {
+    padding: 0;
 }
 
 canvas {
     border: 1px solid #ccc;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

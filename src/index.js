@@ -9,6 +9,8 @@ const textareaReference = document.getElementById('textarea-reference')
 const textareaQuery = document.getElementById('textarea-query')
 const inputK = document.getElementById('input-k')
 
+const containerCanvas = document.getElementById('container-canvas')
+
 const canvas = document.getElementById('canvas')
 const context = canvas.getContext('2d')
 
@@ -24,8 +26,12 @@ function run() {
 function visualize(k, seq1, seq2) {
     const lenSeq1 = seq1.length
     const lenSeq2 = seq2.length
-    const width = canvas.width
-    const height = canvas.height
+
+    const width = Math.min(containerCanvas.clientWidth, containerCanvas.clientHeight) - 40 
+    const height = width
+
+    canvas.width = width
+    canvas.height = height
 
     const x = scaleLinear()
         .domain([0, lenSeq1 - 1])
