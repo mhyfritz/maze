@@ -1,5 +1,6 @@
 import { scaleLinear } from 'd3-scale'
 import kmers from 'k-mers'
+import revcom from 'revcom'
 
 const btnRun = document.getElementById('btn-run')
 btnRun.addEventListener('click', run)
@@ -103,23 +104,4 @@ function buildIndex (k, seq) {
     }
   }
   return index
-}
-
-const revComMap = {
-  'A': 'T',
-  'C': 'G',
-  'G': 'C',
-  'T': 'A',
-  'a': 't',
-  'c': 'g',
-  'g': 'c',
-  't': 'a'
-}
-
-function revcom (seq) {
-  return seq
-      .split('')
-      .reverse()
-      .map(base => revComMap[base] || base)
-      .join('')
 }
