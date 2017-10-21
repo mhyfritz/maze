@@ -135,6 +135,7 @@ function handleDragEnter (ev) {
   console.log('dragenter')
   ev.stopPropagation()
   ev.preventDefault()
+  ev.target.classList.add('dropzone--active')
 }
 
 function handleDragOver (ev) {
@@ -147,6 +148,7 @@ function handleDragLeave (ev) {
   console.log('dragleave')
   ev.stopPropagation()
   ev.preventDefault()
+  ev.target.classList.remove('dropzone--active')
 }
 
 function getDroppedSequences (ev) {
@@ -181,6 +183,7 @@ function setupSequenceDropzone (node) {
   node.addEventListener('drop', ev => {
     ev.stopPropagation()
     ev.preventDefault()
+    ev.target.classList.remove('dropzone--active')
     getDroppedSequences(ev)
   })
 }

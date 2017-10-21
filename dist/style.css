@@ -15,6 +15,10 @@ textarea.textarea.textarea {
     min-height: 200px;
 }
 
+textarea.textarea.dropzone--active {
+    border-color: lime;
+}
+
 .columns {
     height: 100%;
     margin: 0;
