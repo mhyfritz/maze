@@ -132,20 +132,17 @@ function getSequence (str, id = '') {
 }
 
 function handleDragEnter (ev) {
-  console.log('dragenter')
   ev.stopPropagation()
   ev.preventDefault()
   ev.target.classList.add('dropzone--active')
 }
 
 function handleDragOver (ev) {
-  console.log('dragover')
   ev.stopPropagation()
   ev.preventDefault()
 }
 
 function handleDragLeave (ev) {
-  console.log('dragleave')
   ev.stopPropagation()
   ev.preventDefault()
   ev.target.classList.remove('dropzone--active')
@@ -160,7 +157,7 @@ function getDroppedSequences (ev) {
 }
 
 function readFasta (node, f) {
-  var fReader = new FileReader() /* global FileReader */
+  const fReader = new FileReader() /* global FileReader */
   const isGzip = /\.gz$/.test(f.name)
   if (isGzip) { // gzip
     fReader.readAsArrayBuffer(f)
@@ -168,7 +165,7 @@ function readFasta (node, f) {
     fReader.readAsText(f)
   }
   fReader.onload = function (ev) {
-    var fContent = ev.target.result
+    let fContent = ev.target.result
     if (isGzip) {
       fContent = pako.ungzip(fContent, {'to': 'string'})
     }
