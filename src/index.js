@@ -1,3 +1,4 @@
+import pako from 'pako'
 import { scaleLinear } from 'd3-scale'
 import kmers from 'k-mers'
 import revcom from 'revcom'
@@ -7,6 +8,10 @@ btnRun.addEventListener('click', run)
 
 const textareaReference = document.getElementById('textarea-reference')
 const textareaQuery = document.getElementById('textarea-query')
+
+setupSequenceDropzone(textareaReference)
+setupSequenceDropzone(textareaQuery)
+
 const inputK = document.getElementById('input-k')
 
 const containerCanvas = document.getElementById('container-canvas')
@@ -124,4 +129,58 @@ function getSequence (str, id = '') {
     ret.seq = str.replace(/\s+/g, '').toUpperCase()
   }
   return ret
+}
+
+function handleDragEnter (ev) {
+  console.log('dragenter')
+  ev.stopPropagation()
+  ev.preventDefault()
+}
+
+function handleDragOver (ev) {
+  console.log('dragover')
+  ev.stopPropagation()
+  ev.preventDefault()
+}
+
+function handleDragLeave (ev) {
+  console.log('dragleave')
+  ev.stopPropagation()
+  ev.preventDefault()
+}
+
+function getDroppedSequences (ev) {
+  const dt = ev.dataTransfer || (ev.originalEvent && ev.originalEvent.dataTransfer)
+  const files = ev.target.files || (dt && dt.files)
+  const f = files[0]
+
+  readFasta(ev.target, f)
+}
+
+function readFasta (node, f) {
+  var fReader = new FileReader() /* global FileReader */
+  const isGzip = /\.gz$/.test(f.name)
+  if (isGzip) { // gzip
+    fReader.readAsArrayBuffer(f)
+  } else {
+    fReader.readAsText(f)
+  }
+  fReader.onload = function (ev) {
+    var fContent = ev.target.result
+    if (isGzip) {
+      fContent = pako.ungzip(fContent, {'to': 'string'})
+    }
+    node.value = fContent
+  }
+}
+
+function setupSequenceDropzone (node) {
+  node.addEventListener('dragenter', handleDragEnter)
+  node.addEventListener('dragleave', handleDragLeave)
+  node.addEventListener('dragover', handleDragOver)
+  node.addEventListener('drop', ev => {
+    ev.stopPropagation()
+    ev.preventDefault()
+    getDroppedSequences(ev)
+  })
 }
