@@ -1,10 +1,19 @@
-@import url('https://fonts.googleapis.com/css?family=Inconsolata|Nunito+Sans');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Nunito+Sans|Qwigley');
 
 body {
     margin: 0;
     padding: 0;
     font-family: 'Nunito Sans', sans-serif;
     height: 100vh;
+}
+
+.logo {
+    font-family: 'Qwigley', cursive;
+    font-size: 4rem;
+    line-height: 4rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #555;
 }
 
 /* sensitivity hack */
@@ -19,9 +28,10 @@ textarea.textarea.dropzone--active {
     border-color: lime;
 }
 
-.columns {
+.columns.columns.columns {
     height: 100%;
     margin: 0;
+    margin-bottom: 0;
 }
 
 .column--right {

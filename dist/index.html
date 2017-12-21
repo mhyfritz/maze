@@ -17,15 +17,24 @@
             <canvas id="canvas" width="0" height="0"></canvas>
         </div>
         <div class="column column--right">
+            <h1 class="logo">maze</h1>
             <div style="margin-bottom: 10px;">
                 <a id="btn-run" class="button is-primary">
-                    <span class="icon" style="margin-right: 5px;"><i class="fa fa-play-circle-o" aria-hidden="true"></i></span>
+                    <span class="icon" style="margin-right: 5px;">
+                        <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+                    </span>
                     Visualize
+                </a>
+                <a id="btn-load-example" class="button">
+                    <span class="icon">
+                        <i class="fa fa-lightbulb-o"></i>
+                    </span>
+                    <span>Load example</span>
                 </a>
             </div>
             <div style="margin-bottom: 10px;">
                 Match length (bp)
-                <input id="input-k" class="input" type="number" value="8" min="4">
+                <input id="input-k" class="input" type="number" value="10" min="4">
             </div>
             <div style="margin-bottom: 10px;">
                 <h2>Reference sequence</h2>

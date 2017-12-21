@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "standard",
     "lint:fix": "standard --fix",
-    "build": "webpack"
+    "build": "webpack -p",
+    "dev": "webpack-dev-server"
   },
   "keywords": [],
   "author": {
@@ -25,6 +26,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "standard": "^10.0.3",
-    "webpack": "^3.8.1"
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.7"
   }
 }
