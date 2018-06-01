@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "build": "rimraf dist && parcel build src/index.html --no-source-maps --no-minify",
+    "build": "rimraf dist && parcel build src/index.html --no-source-maps --no-minify --public-url ./",
     "dev": "parcel src/index.html --open"
   },
   "keywords": [],
