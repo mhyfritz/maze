@@ -88,6 +88,18 @@ function visualize(k, seq1, seq2) {
   const gXaxis = g.append('g').call(xAxis)
   const gYaxis = g.append('g').call(yAxis)
 
+  g
+    .append('text')
+    .attr('transform', `translate(${innerWidth / 2}, -40)`)
+    .style('text-anchor', 'middle')
+    .text('Sequence 1')
+
+  g
+    .append('text')
+    .attr('transform', `translate(-60, ${innerHeight / 2}) rotate(-90)`)
+    .style('text-anchor', 'middle')
+    .text('Sequence 2')
+
   // TODO: better border lines
   g
     .append('line')
