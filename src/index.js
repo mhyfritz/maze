@@ -124,7 +124,7 @@ function visualize(k, seq1, seq2) {
     context.clearRect(0, 0, width, height)
 
     gXaxis.call(xAxis.scale(transform.rescaleX(x)))
-    gYaxis.call(yAxis.scale(transform.rescaleX(y)))
+    gYaxis.call(yAxis.scale(transform.rescaleY(y)))
 
     const iterKmers = kmers(k, seq2)
     context.beginPath()
