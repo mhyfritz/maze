@@ -3,10 +3,8 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "lint": "standard",
-    "lint:fix": "standard --fix",
-    "build": "webpack -p",
-    "dev": "webpack-dev-server"
+    "build": "rimraf dist && parcel build src/index.html --no-source-maps --no-minify",
+    "dev": "parcel src/index.html --open"
   },
   "keywords": [],
   "author": {
@@ -24,11 +22,7 @@
     "revcom": "0.0.3"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
-    "standard": "^10.0.3",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.7"
+    "parcel-bundler": "^1.8.1",
+    "rimraf": "^2.6.2"
   }
 }
