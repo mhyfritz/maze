@@ -13,8 +13,13 @@
 
 <body>
     <div class="columns">
-        <div id="container-canvas" class="column is-three-quarters column--left" style="border-right: solid 1px #ccc;">
-            <canvas id="canvas" width="0" height="0"></canvas>
+        <div class="column is-three-quarters column--left" style="border-right: solid 1px #ccc; padding: 20px;">
+            <div id="chart-container">
+                <div id="chart">
+                    <svg id="svg"></svg>
+                    <canvas id="canvas"></canvas>
+                </div>
+            </div>
         </div>
         <div class="column column--right">
             <h1 class="logo">maze</h1>
