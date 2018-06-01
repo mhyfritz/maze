@@ -52,9 +52,6 @@ textarea.textarea.dropzone--active {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid #bababa;
-  width: 0;
-  height: 0;
 }
 
 #svg {

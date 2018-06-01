@@ -32,10 +32,10 @@ const context = canvas.node().getContext('2d')
 const svg = select('#svg')
 
 const margin = {
-  left: 100,
-  right: 100,
-  top: 100,
-  bottom: 100
+  left: 75,
+  right: 75,
+  top: 75,
+  bottom: 75
 }
 
 function run() {
@@ -97,7 +97,7 @@ function visualize(k, seq1, seq2) {
     .attr('x2', innerWidth)
     .attr('y2', innerHeight)
 
-    g
+  g
     .append('line')
     .style('stroke', 'black')
     .attr('x1', 0)
@@ -105,9 +105,12 @@ function visualize(k, seq1, seq2) {
     .attr('x2', innerWidth)
     .attr('y2', innerHeight)
 
-  const zoomBehavior = zoom().on('zoom', () => {
-    draw(event.transform)
-  })
+  const zoomBehavior = zoom()
+    .scaleExtent([1, Infinity])
+    .translateExtent([[0, 0], [innerWidth, innerHeight]])
+    .on('zoom', () => {
+      draw(event.transform)
+    })
 
   select('canvas').call(zoomBehavior)
 
