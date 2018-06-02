@@ -6,11 +6,10 @@ import kmers from 'k-mers'
 import pako from 'pako'
 import revcom from 'revcom'
 
-const btnRun = document.getElementById('btn-run')
-btnRun.addEventListener('click', run)
+$('#result-modal').on('shown.bs.modal', run)
 
-const btnLoadExample = document.getElementById('btn-load-example')
-btnLoadExample.addEventListener('click', loadExample)
+const exampleButton = document.getElementById('btn-example')
+exampleButton.addEventListener('click', loadExample)
 
 const textareaReference = document.getElementById('textarea-reference')
 const textareaQuery = document.getElementById('textarea-query')
@@ -19,13 +18,8 @@ setupSequenceDropzone(textareaReference)
 setupSequenceDropzone(textareaQuery)
 
 const inputK = document.getElementById('input-k')
-inputK.addEventListener('keyup', function(event) {
-  if (event.key === 'Enter') {
-    run()
-  }
-})
 
-const container = select('#chart-container')
+const container = select('.modal-content')
 const chart = select('#chart')
 const canvas = select('#canvas')
 const context = canvas.node().getContext('2d')
@@ -287,5 +281,4 @@ function loadExample() {
   textareaReference.innerText = exampleSeq1
   textareaQuery.innerText = exampleSeq2
   inputK.value = '8'
-  run()
 }
