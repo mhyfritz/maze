@@ -14,8 +14,11 @@ exampleButton.addEventListener('click', loadExample)
 const textareaReference = document.getElementById('textarea-reference')
 const textareaQuery = document.getElementById('textarea-query')
 
-setupSequenceDropzone(textareaReference)
-setupSequenceDropzone(textareaQuery)
+const dropzoneReference = document.getElementById('dropzone-reference')
+const dropzoneQuery = document.getElementById('dropzone-query')
+
+setupSequenceDropzone(dropzoneReference, textareaReference)
+setupSequenceDropzone(dropzoneQuery, textareaQuery)
 
 const inputK = document.getElementById('input-k')
 
@@ -82,29 +85,25 @@ function visualize(k, seq1, seq2) {
   const gXaxis = g.append('g').call(xAxis)
   const gYaxis = g.append('g').call(yAxis)
 
-  g
-    .append('text')
+  g.append('text')
     .attr('transform', `translate(${innerWidth / 2}, -40)`)
     .style('text-anchor', 'middle')
     .text('Sequence 1')
 
-  g
-    .append('text')
+  g.append('text')
     .attr('transform', `translate(-60, ${innerHeight / 2}) rotate(-90)`)
     .style('text-anchor', 'middle')
     .text('Sequence 2')
 
   // TODO: better border lines
-  g
-    .append('line')
+  g.append('line')
     .style('stroke', 'black')
     .attr('x1', innerWidth)
     .attr('y1', 0)
     .attr('x2', innerWidth)
     .attr('y2', innerHeight)
 
-  g
-    .append('line')
+  g.append('line')
     .style('stroke', 'black')
     .attr('x1', 0)
     .attr('y1', innerHeight)
@@ -233,16 +232,16 @@ function handleDragLeave(ev) {
   ev.target.classList.remove('dropzone--active')
 }
 
-function getDroppedSequences(ev) {
+function getDroppedSequences(ev, cb) {
   const dt =
     ev.dataTransfer || (ev.originalEvent && ev.originalEvent.dataTransfer)
   const files = ev.target.files || (dt && dt.files)
   const f = files[0]
 
-  readFasta(ev.target, f)
+  readFasta(ev.target, f, cb)
 }
 
-function readFasta(node, f) {
+function readFasta(node, f, cb) {
   const fReader = new FileReader() /* global FileReader */
   const isGzip = /\.gz$/.test(f.name)
   if (isGzip) {
@@ -256,11 +255,11 @@ function readFasta(node, f) {
     if (isGzip) {
       fContent = pako.ungzip(fContent, { to: 'string' })
     }
-    node.value = fContent
+    cb(fContent)
   }
 }
 
-function setupSequenceDropzone(node) {
+function setupSequenceDropzone(node, target) {
   node.addEventListener('dragenter', handleDragEnter)
   node.addEventListener('dragleave', handleDragLeave)
   node.addEventListener('dragover', handleDragOver)
@@ -268,7 +267,9 @@ function setupSequenceDropzone(node) {
     ev.stopPropagation()
     ev.preventDefault()
     ev.target.classList.remove('dropzone--active')
-    getDroppedSequences(ev)
+    const seq = getDroppedSequences(ev, seq => {
+      target.value = seq
+    })
   })
 }
 

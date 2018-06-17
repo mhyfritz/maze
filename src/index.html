@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>maze: match visualizer | GEAR</title>
   <meta name="description" content="Visually align two DNA sequences using exact matches.">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
   <link rel="stylesheet" href="./static/css/gear.css">
   <link rel="stylesheet" href="./static/css/maze.css">
@@ -35,12 +36,54 @@
         <input class="form-control" id="input-k" type="number" value="10" min="4">
       </div>
       <div class="form-group">
-        <label for="textarea-reference">Sequence 1</label>
-        <textarea class="form-control text-monospace" id="textarea-reference" spellcheck="false" rows="5"></textarea>
+        <label>Sequence 1</label>
+        <div class="alert alert-info" role="alert">
+          <i class="fas fa-info-circle"></i>
+          Enter the sequence in the text box or drag-and-drop a file onto the drop area.
+        </div>
+        <div class="form-row">
+          <div class="col-md-10">
+            <textarea
+              class="form-control text-monospace"
+              id="textarea-reference"
+              spellcheck="false"
+              rows="5"
+              placeholder="Enter sequence..."
+            ></textarea>
+          </div>
+          <div class="col-md-2">
+            <div class="dropzone" id="dropzone-reference">
+              <div class="dropzone__content">
+                Drop file (raw or FASTA, text or gzip)
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="form-group">
-        <label for="textarea-query">Sequence 2</label>
-        <textarea class="form-control text-monospace" id="textarea-query" spellcheck="false" rows="5"></textarea>
+        <label>Sequence 2</label>
+        <div class="alert alert-info" role="alert">
+          <i class="fas fa-info-circle"></i>
+          Enter the sequence in the text box or drag-and-drop a file onto the drop area.
+        </div>
+        <div class="form-row">
+          <div class="col-md-10">
+              <textarea
+              class="form-control text-monospace"
+              id="textarea-query"
+              spellcheck="false"
+              rows="5"
+              placeholder="Enter sequence..."
+            ></textarea>
+          </div>
+          <div class="col-md-2">
+            <div class="dropzone" id="dropzone-query">
+              <div class="dropzone__content">
+                Drop file (raw or FASTA, text or gzip)
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </form>
     <button type="submit" class="btn btn-outline-primary" id="btn-submit" data-toggle="modal" data-target="#result-modal">
@@ -59,10 +102,10 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-          <div id="chart">
-            <svg id="svg"></svg>
-            <canvas id="canvas"></canvas>
-          </div>
+        <div id="chart">
+          <svg id="svg"></svg>
+          <canvas id="canvas"></canvas>
+        </div>
       </div>
     </div>
   </div>
@@ -72,19 +115,19 @@
       <div class="float-left">
         GEAR ~
         <a class="plain" target="_blank" href="https://gear.embl.de">
-            <i class="fas fa-home"></i>
+          <i class="fas fa-home"></i>
         </a>
         ·
         <a class="plain" target="_blank" href="https://github.com/gear-genomics">
-            <i class="fab fa-github-alt"></i>
+          <i class="fab fa-github-alt"></i>
         </a>
         ·
         <a class="plain" target="_blank" href="https://gear.embl.de/terms">
-            Terms of Use
+          Terms of Use
         </a>
         ·
         <a class="plain" target="_blank" href="https://gear.embl.de/contact">
-            Contact Us
+          Contact Us
         </a>
       </div>
       <div class="float-right">
@@ -95,11 +138,14 @@
         </a>
       </div>
     </div>
-    </footer>
+  </footer>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
 
   <script src="./static/js/maze.js"></script>
 </body>
