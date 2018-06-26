@@ -33,9 +33,9 @@
 
 .dropzone {
   border: 1px dashed #ced4da;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   height: 100%;
-  padding: .5rem;
+  padding: 0.5rem;
   background-color: #fcfcfc;
 }
 
@@ -48,5 +48,5 @@
   position: relative;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
 }
