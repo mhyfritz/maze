@@ -32,6 +32,13 @@ revcomReferenceButton.addEventListener(
 
 revcomQueryButton.addEventListener('click', revcomSeq.bind(null, textareaQuery))
 
+const notification = document.getElementById('alert-global')
+document
+  .getElementById('alert-global__button-close')
+  .addEventListener('click', () => {
+    hideElement(notification)
+  })
+
 const container = select('.modal-content')
 const chart = select('#chart')
 const canvas = select('#canvas')
@@ -293,7 +300,7 @@ function revcomSeq(textarea) {
   if (isDna(seq)) {
     textarea.value = revcom(textarea.value)
   } else {
-    showError('Error: only raw sequences can be reverse complemented')
+    showError('Error: only raw, DNA sequences can be reverse complemented')
   }
 }
 

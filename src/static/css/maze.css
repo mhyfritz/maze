@@ -50,3 +50,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+#alert-global {
+  margin: 0;
+}
