@@ -8,12 +8,20 @@
   <meta name="description" content="Visually align two DNA sequences using exact matches.">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
     crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
   <link rel="stylesheet" href="./static/css/gear.css">
   <link rel="stylesheet" href="./static/css/maze.css">
 </head>
 
 <body>
+
+  <div id="alert-global" class="alert alert-danger d-none" role="alert">
+    <i class="fas fa-fire mr-2"></i>
+    <span id="alert-global__message"></span>
+    <button id="alert-global__button-close" type="button" class="close">
+      <span>&times;</span>
+    </button>
+  </div>
 
   <header class="px-0 py-4">
     <div class="container">
@@ -35,25 +43,25 @@
         <label for="input-k">Match length (bp)</label>
         <input class="form-control" id="input-k" type="number" value="10" min="4">
       </div>
-      <div class="form-group">
-        <label>Sequence 1</label>
-        <div class="alert alert-info" role="alert">
+      <div class="alert alert-info" role="alert">
           <i class="fas fa-info-circle"></i>
-          Enter the sequence in the text box or drag-and-drop a file onto the drop area.
+          Enter sequences into the text boxes below or drag-and-drop a file onto the drop areas.
         </div>
+      <div class="form-group">
+        <i class="fas fa-dna"></i>
+        <label>Sequence 1</label>
+        <button id="btn-revcom-reference" type="button" class="btn btn-sm btn-outline-secondary ml-2">
+          <i class="fas fa-exchange-alt"></i>
+          <span>Reverse complement</span>
+        </button>
         <div class="form-row">
           <div class="col-md-10">
-            <textarea
-              class="form-control text-monospace"
-              id="textarea-reference"
-              spellcheck="false"
-              rows="5"
-              placeholder="Enter sequence..."
-            ></textarea>
+            <textarea class="form-control text-monospace" id="textarea-reference" spellcheck="false" rows="5" placeholder="Enter sequence..."></textarea>
           </div>
           <div class="col-md-2">
             <div class="dropzone" id="dropzone-reference">
               <div class="dropzone__content">
+                <i class="fas fa-parachute-box"></i>
                 Drop file (raw or FASTA, text or gzip)
               </div>
             </div>
@@ -61,24 +69,20 @@
         </div>
       </div>
       <div class="form-group">
+        <i class="fas fa-dna"></i>
         <label>Sequence 2</label>
-        <div class="alert alert-info" role="alert">
-          <i class="fas fa-info-circle"></i>
-          Enter the sequence in the text box or drag-and-drop a file onto the drop area.
-        </div>
+        <button id="btn-revcom-query" type="button" class="btn btn-sm btn-outline-secondary ml-2">
+          <i class="fas fa-exchange-alt"></i>
+          <span>Reverse complement</span>
+        </button>
         <div class="form-row">
           <div class="col-md-10">
-              <textarea
-              class="form-control text-monospace"
-              id="textarea-query"
-              spellcheck="false"
-              rows="5"
-              placeholder="Enter sequence..."
-            ></textarea>
+            <textarea class="form-control text-monospace" id="textarea-query" spellcheck="false" rows="5" placeholder="Enter sequence..."></textarea>
           </div>
           <div class="col-md-2">
             <div class="dropzone" id="dropzone-query">
               <div class="dropzone__content">
+                <i class="fas fa-parachute-box"></i>
                 Drop file (raw or FASTA, text or gzip)
               </div>
             </div>
