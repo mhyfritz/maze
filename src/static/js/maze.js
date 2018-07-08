@@ -313,7 +313,8 @@ function hideElement(element) {
 }
 
 function isDna(seq) {
-  const dnaPat = /^[acgt]+$/i
+  // allow newlines
+  const dnaPat = /^[acgt\n]+$/i
   return dnaPat.test(seq)
 }
 
