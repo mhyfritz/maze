@@ -23,6 +23,6 @@
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.3",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.7.1"
   }
 }
